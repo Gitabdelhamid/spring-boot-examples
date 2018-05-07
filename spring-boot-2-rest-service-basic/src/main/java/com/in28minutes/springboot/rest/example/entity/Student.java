@@ -1,8 +1,12 @@
-package com.in28minutes.springboot.rest.example.student;
+package com.in28minutes.springboot.rest.example.entity;
+
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Student {
@@ -12,6 +16,12 @@ public class Student {
 	private String name;
 	private String passportNumber;
 	
+//TODO	@OneToMany
+//	@JoinColumn(name="id", referencedColumnName="id")
+//	private List<Course> listCourses;
+	
+	
+
 	public Student() {
 		super();
 	}

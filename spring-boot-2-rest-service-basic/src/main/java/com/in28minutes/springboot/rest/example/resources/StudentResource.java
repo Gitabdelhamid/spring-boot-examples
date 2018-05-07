@@ -1,4 +1,4 @@
-package com.in28minutes.springboot.rest.example.student;
+package com.in28minutes.springboot.rest.example.resources;
 
 import java.net.URI;
 import java.util.List;
@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.in28minutes.springboot.rest.example.entity.Student;
+import com.in28minutes.springboot.rest.example.exception.StudentNotFoundException;
+import com.in28minutes.springboot.rest.example.repository.StudentRepository;
 
 @RestController
 public class StudentResource {
