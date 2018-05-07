@@ -15,24 +15,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.in28minutes.springboot.rest.example.dao.IStudentDao;
 import com.in28minutes.springboot.rest.example.entity.Student;
 import com.in28minutes.springboot.rest.example.exception.StudentNotFoundException;
-import com.in28minutes.springboot.rest.example.repository.StudentRepository;
 
 @RestController
 public class StudentResource {
 
 	@Autowired
-	private StudentRepository studentRepository;
+	private IStudentDao iStudentDao;
 
 	@GetMapping("/students")
 	public List<Student> retrieveAllStudents() {
-		return studentRepository.findAll();
+		return iStudentDao.findAll();
 	}
 
 	@GetMapping("/students/{id}")
 	public Student retrieveStudent(@PathVariable long id) {
-		Optional<Student> student = studentRepository.findById(id);
+		Optional<Student> student = iStudentDao.findById(id);
 
 		if (!student.isPresent())
 			throw new StudentNotFoundException("id-" + id);
@@ -42,12 +42,12 @@ public class StudentResource {
 
 	@DeleteMapping("/students/{id}")
 	public void deleteStudent(@PathVariable long id) {
-		studentRepository.deleteById(id);
+		iStudentDao.deleteById(id);
 	}
 
 	@PostMapping("/students")
 	public ResponseEntity<Object> createStudent(@RequestBody Student student) {
-		Student savedStudent = studentRepository.save(student);
+		Student savedStudent = iStudentDao.save(student);
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(savedStudent.getId()).toUri();
@@ -59,14 +59,14 @@ public class StudentResource {
 	@PutMapping("/students/{id}")
 	public ResponseEntity<Object> updateStudent(@RequestBody Student student, @PathVariable long id) {
 
-		Optional<Student> studentOptional = studentRepository.findById(id);
+		Optional<Student> studentOptional = iStudentDao.findById(id);
 
 		if (!studentOptional.isPresent())
 			return ResponseEntity.notFound().build();
 
 		student.setId(id);
 		
-		studentRepository.save(student);
+		iStudentDao.save(student);
 
 		return ResponseEntity.noContent().build();
 	}
