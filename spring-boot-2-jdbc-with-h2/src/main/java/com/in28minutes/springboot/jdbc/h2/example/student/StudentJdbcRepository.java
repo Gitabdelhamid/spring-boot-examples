@@ -9,7 +9,11 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-
+/**
+ * 
+ * @author ghailana
+ *
+ */
 @Repository
 public class StudentJdbcRepository {
 	@Autowired

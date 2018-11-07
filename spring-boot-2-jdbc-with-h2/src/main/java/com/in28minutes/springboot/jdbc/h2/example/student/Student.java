@@ -1,5 +1,9 @@
 package com.in28minutes.springboot.jdbc.h2.example.student;
-
+/**
+ * 
+ * @author ghailana
+ *
+ */
 public class Student {
 	private Long id;
 	private String name;
