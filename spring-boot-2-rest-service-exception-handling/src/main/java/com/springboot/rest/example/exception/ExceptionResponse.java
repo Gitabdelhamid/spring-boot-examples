@@ -1,4 +1,4 @@
-package com.in28minutes.springboot.rest.example.exception;
+package com.springboot.rest.example.exception;
 import java.util.Date;
 
 public class ExceptionResponse {

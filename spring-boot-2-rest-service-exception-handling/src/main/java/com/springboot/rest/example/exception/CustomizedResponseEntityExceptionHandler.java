@@ -1,4 +1,4 @@
-package com.in28minutes.springboot.rest.example.exception;
+package com.springboot.rest.example.exception;
 import java.util.Date;
 
 import org.springframework.http.HttpStatus;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.in28minutes.springboot.rest.example.student.StudentNotFoundException;
+import com.springboot.rest.example.student.StudentNotFoundException;
 
 @ControllerAdvice
 @RestController
