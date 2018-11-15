@@ -20,7 +20,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.springboot.rest.example.SpringBoot2RestServiceApplication;
-import com.springboot.rest.example.student.StudentResource;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = SpringBoot2RestServiceApplication.class)
@@ -62,5 +61,19 @@ public class StudentResourceTest {
 		.andExpect(jsonPath("$.passportNumber").value("E1234567"))
 		.andDo(print());
 	}	
+	/**
+	 * {@link StudentResource#deleteStudent(long)}
+	 * @throws Exception
+	 */
+	@Test
+	public void verifyDeleteStudent() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.delete("/students/10001").accept(MediaType.APPLICATION_JSON));
+		
+		mockMvc.perform(MockMvcRequestBuilders.get("/students/10001").accept(MediaType.APPLICATION_JSON))
+		.andExpect(jsonPath("$.id").doesNotExist())
+		.andExpect(jsonPath("$.name").doesNotExist())
+		.andExpect(jsonPath("$.passportNumber").doesNotExist())
+		.andDo(print());
+	}
 
 }
